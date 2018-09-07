@@ -148,20 +148,15 @@ For the above tables, Max has the highest salary in the IT department and Henry 
 
 Solution:
 
-SELECT 
-       Department.Name AS 'Deparment'
-       Employee.Name AS 'Employee'
+SELECT Department.Name AS 'Department',
+       Employee.Name AS 'Employee',
        Salary
-FROM 
-       Employee JOIN Department
-       ON Employee.DepartmentId = Deparment.Id
-WHERE 
-       (Employee.DepartmentId, Salary) IN
-       (
-       SELECT DepartmentId, MAX(Salary)
-       FROM Employee
-       GROUP BY DeparmentId
-       )
+FROM Employee JOIN Department
+ON Employee.DepartmentId = Department.Id
+WHERE (Employee.DepartmentId, Salary) IN
+(
+    SELECT DepartmentId, MAX(Salary)
+    FROM Employee
+    GROUP BY DepartmentId
+)
 ;
-
-I got a RUNTIME ERROR with above solution because
