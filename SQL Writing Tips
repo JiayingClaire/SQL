@@ -28,3 +28,10 @@ SELECT release_year
 FROM films
 GROUP BY release_year
 HAVING COUNT(title) > 10;
+
+#3 Use varchar type instead of the char type
+
+When comparing a char type with a varchar type, one may expect extra spaces to be added to the varchar type 
+to make the lengths equal, before comparison. Hhowever, this may or may not be done, depending on the database system. 
+As a result, even if the same value “Avi” is stored in the attributes A and B above, a comparison A=B may return false. 
+Thus, always use the varchar type instead of the char type to avoid these problems.
