@@ -1,0 +1,30 @@
+#1 Integer division
+
+SQL assumes that if you divide an integer by an integer, you want to get an integer back, e.g. 5/3 -> 1.
+So be careful when dividing! 
+
+Solution 1:
+Cast one of the integers to the desired type:
+CAST (5 AS DOUBLE PRECISION) / 3
+
+Solution 2:
+Add decimal places to the numbers, e.g. SELECT (4.0 / 3.0) AS result;
+When you're dividing, make sure at least one of the numbers has a decimal place.
+Another example: using SELECT 45 * 100.0 / 10; instead of SELECT 45 / 10 * 100.0;
+
+#2 The HAVING function
+
+In SQL, aggregate functions can't be used in WHERE clauses. 
+
+For example, the following query is invalid:
+SELECT release_year
+FROM films
+GROUP BY release_year
+WHERE COUNT(title) > 10;
+
+That's where the HAVING clause comes in. 
+For example:
+SELECT release_year
+FROM films
+GROUP BY release_year
+HAVING COUNT(title) > 10;
