@@ -35,3 +35,24 @@ When comparing a char type with a varchar type, one may expect extra spaces to b
 to make the lengths equal, before comparison. Hhowever, this may or may not be done, depending on the database system. 
 As a result, even if the same value “Avi” is stored in the attributes A and B above, a comparison A=B may return false. 
 Thus, always use the varchar type instead of the char type to avoid these problems.
+
+# NULL values in WHERE clause
+
+AND
+true AND NULL -> NULL
+false AND NULL -> false
+NULL AND NULL -> NULL 
+
+OR
+true OR NULL -> true
+false OR NULL -> NULL
+NULL OR NULL -> NULL 
+
+NOT
+NOT NULL -> NULL
+
+
+
+
+
+
