@@ -51,8 +51,26 @@ NULL OR NULL -> NULL
 NOT
 NOT NULL -> NULL
 
+# Data Type for some variables:
+phone_number  VARCHAR(15)
+loan_number   VARCHAR(25)
+You orginially thought they should be INT, while phone_number will be sth, like +001646...., and loan_number like ACC-123-746
 
+# SELECT more
+Think twice when you type the SELECT statement:
 
+Provide the SQL statement that returns the total number of movies for each rental rate.
 
+Your answer:
+SELECT COUNT(title)
+FROM film
+GROUP BY rental_rate;
+
+Suggested answer:
+SELECT rental_rate, COUNT(*)
+FROM film
+GROUP BY rental_rate;
+
+Note that you need to print the "rental_rate" and map the count with it.
 
 
