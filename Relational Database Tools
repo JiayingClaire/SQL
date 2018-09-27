@@ -1,0 +1,4 @@
+1. LucidChart: a very user-friendly platform for Entity Relationship Diagram design.
+Note: UML has several shapes that are very similar to Chan's notation. 
+And for engineering notation, it supports the import of existing tables from pgAdmin4. 
+The ERD will display automatically but still need to check the cardinalities.
