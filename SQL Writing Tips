@@ -110,4 +110,52 @@ ON m1.member_id = m2.member_id
 AND m1.email >= m2.email
 GROUP BY member_id, email;
 
+# Select only the transactions happened during weekends:
+1) SELECT some_columns
+FROM some_dataset
+WHERE EXTRACT(ISODOW FROM date) IN (6, 7) 
+-- returns a boolean 
+-- 6 represents Sat, 7 represents Sun
+
+2) SELECT some_columns
+FROM some_dataset
+WHERE datename(weekday, Date) in ('Saturday', 'Sunday’)
+
+# Three ways to select the n-highest number of row
+# (e.g. n=1000)
+1) by TOP/ LIMIT function
+
+SELECT spend
+FROM (
+SELECT spend FROM order_table
+ORDER BY spend DESC
+LIMIT 1000)
+ORDER BY spend
+LIMIT 1;
+
+# The limitation of this method is that if two rows have the same spend, they should be the same highest spend,
+# while LIMIT 1 will only show one of the result.
+
+2) by window function - ROW_NUMBER() OVER keyword
+
+SELECT spend , FROM (
+SELECT spend , ROW_NUMBER() OVER( ORDER BY spend DESC) AS spend_rank
+FROM order_table)
+WHERE spend_rank = 1000;
+
+# Use ROW_NUMBER() instead of RANK(), because only in that way can we find the 1000th row for sure.
+
+3) by JOIN function
+
+SELECT ot1.id, ot2.spend
+FROM order_table ot1
+JOIN order_table ot2
+ON ot1.spend <= ot2.spend   -- this step is like ordering
+GROUP BY ot1.id, ot2.spend
+HAVING COUNT(*) = 1000;
+
+# JOIN = INNER JOIN
+
+
+
 
