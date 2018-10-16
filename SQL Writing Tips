@@ -156,6 +156,9 @@ HAVING COUNT(*) = 1000;
 
 # JOIN = INNER JOIN
 
-
+# DON'T MISS UP!
+Select all records where the City column is NOT the value "Berlin":
+WRONG: SELECT * FROM XXX WHERE city != 'Berlin';
+CORRECT: SELECT * FROM XXX WHERE city <> 'Berlin';
 
 
