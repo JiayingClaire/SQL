@@ -161,4 +161,22 @@ Select all records where the City column is NOT the value "Berlin":
 WRONG: SELECT * FROM XXX WHERE city != 'Berlin';
 CORRECT: SELECT * FROM XXX WHERE city <> 'Berlin';
 
+# the LIKE clause
+1) Select all records where the first letter of the City is an "a" or a "b" or a "c".
+select * from customers where city like '[abc]%'
+
+2) Select all records where the first letter of the City is NOT an "a" or a "b" or a "c".
+select * from customers where city like '[!abc]%'
+
+3) Select all records where the first letter of the City starts with anything from an "a" to an "f".
+select * from customers where city like '[a-f]%'
+
+# Add a column of type DATE called Birthday.
+ALTER TABLE persons ADD Birthday Date
+
+
+
+
+
+
 
