@@ -171,10 +171,12 @@ select * from customers where city like '[!abc]%'
 3) Select all records where the first letter of the City starts with anything from an "a" to an "f".
 select * from customers where city like '[a-f]%'
 
-# Add a column of type DATE called Birthday.
-ALTER TABLE persons ADD Birthday Date
+# Add & Delete
+1) add a column of type DATE called Birthday.
+ALTER TABLE persons ADD Birthday Date;
 
-
+2) Delete the column Birthday from the Persons table.
+ALTER TABLE persons DROP COLUMN birthday;
 
 
 
